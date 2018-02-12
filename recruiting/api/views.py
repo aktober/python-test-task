@@ -7,7 +7,7 @@ from recruiting.models import Vacancy
 
 class VacancyList(generics.ListAPIView):
 
-    queryset = Vacancy.objects.all()
+    queryset = Vacancy.objects.filter(is_active=True)
     serializer_class = VacancySerializer
     permission_classes = (permissions.AllowAny,)
 
@@ -26,18 +26,8 @@ class VacancyList(generics.ListAPIView):
         return queryset
 
 
-class VacancyUpdate(generics.RetrieveUpdateAPIView):
+class VacancyUpdate(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Vacancy.objects.all()
     serializer_class = VacancySerializer
-
-    # def update(self, request, *args, **kwargs):
-    #     partial = kwargs.pop('partial', False)
-    #     instance = self.get_object()
-    #     serializer = self.get_serializer(instance, data=request.data, partial=partial)
-    #     print(serializer.initial_data)
-    #     serializer.is_valid(raise_exception=True)
-    #
-    #     self.perform_update(serializer)
-    #     return Response(serializer.data)
 

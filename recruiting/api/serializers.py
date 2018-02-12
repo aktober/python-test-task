@@ -28,7 +28,6 @@ class VacancyImageSerializer(serializers.ModelSerializer):
 class VacancySerializer(serializers.ModelSerializer):
     location = CitySerializer(many=True)
     company = CompanySerializer()
-    # image_list = serializers.SlugRelatedField(many=True, read_only=True, slug_field='url')
     image_list = VacancyImageSerializer(many=True)
 
     class Meta:
@@ -41,6 +40,7 @@ class VacancySerializer(serializers.ModelSerializer):
         instance.is_active = validated_data.get('is_active', instance.is_active)
         instance.title = validated_data.get('title', instance.title)
 
+        instance.locations.clear()
         locations = validated_data.get('location')
         for loc in locations:
             city = loc.get('name')
@@ -54,6 +54,7 @@ class VacancySerializer(serializers.ModelSerializer):
         instance.ends_at = validated_data.get('ends_at', instance.ends_at)
         instance.description = validated_data.get('description', instance.description)
 
+        instance.image_list.clear()
         images = validated_data.get('image_list')
         for img in images:
             image = img.get('url')
