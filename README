@@ -1,0 +1,5 @@
+For test coverage run:
+
+coverage run --source='.' manage.py test recruiting
+
+coverage report

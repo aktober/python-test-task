@@ -40,7 +40,7 @@ class VacancySerializer(serializers.ModelSerializer):
         instance.is_active = validated_data.get('is_active', instance.is_active)
         instance.title = validated_data.get('title', instance.title)
 
-        instance.locations.clear()
+        instance.location.clear()
         locations = validated_data.get('location')
         for loc in locations:
             city = loc.get('name')
