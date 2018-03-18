@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url
+
+from recruiting import views
 from recruiting.api.views import VacancyList, VacancyUpdate
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url('api/vacancies/', VacancyList.as_view(), name="api_vacancies"),
     url('api/vacancy/(?P<pk>\d+)/', VacancyUpdate.as_view(), name='vacancy_update'),
+    url(r'^endpoint/$', views.endpoint, name='endpoint'),
 ]
