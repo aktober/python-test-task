@@ -1,7 +1,9 @@
 from django.http import HttpResponse
 from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt
 def endpoint(request):
     if request.method == 'POST':
         send_mail('Subscription URL', 'POST request: {}'.format(request.POST), 'a.popovychenko@gmail.com',
