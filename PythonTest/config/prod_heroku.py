@@ -6,6 +6,8 @@ import dj_database_url
 DEBUG = True
 
 SECRET_KEY = os.environ['SECRET_KEY']
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 
 ROOT_DIR = BASE_DIR
 
