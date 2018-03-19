@@ -10,6 +10,7 @@ logger = logging.getLogger('django')
 def endpoint(request):
     if request.method == 'POST':
         logger.info('POST request: {}'.format(request.POST))
+        logger.info('META request: {}'.format(request.META))
         aws_type = request.META.get('x-amz-sns-message-type')
         logger.info('aws_type: {}'.format(aws_type))
 
