@@ -113,9 +113,18 @@ REST_FRAMEWORK = {
     ),
 }
 
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'a.popovychenko@gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = 'vwalwzrkogsybqpb'
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}
