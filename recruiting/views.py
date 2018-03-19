@@ -11,6 +11,7 @@ def endpoint(request):
     if request.method == 'POST':
         logger.info('POST request: {}'.format(request.POST))
         logger.info('META request: {}'.format(request.META))
+        logger.info('request: {}'.format(request))
         aws_type = request.META.get('HTTP_X_AMZ_SNS_MESSAGE_TYPE')
         logger.info('aws_type: {}'.format(aws_type))
 
