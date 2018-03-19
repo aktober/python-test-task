@@ -11,7 +11,7 @@ def endpoint(request):
     if request.method == 'POST':
         logger.info('POST request: {}'.format(request.POST))
         logger.info('META request: {}'.format(request.META))
-        aws_type = request.META.get('x-amz-sns-message-type')
+        aws_type = request.META.get('HTTP_X_AMZ_SNS_MESSAGE_TYPE')
         logger.info('aws_type: {}'.format(aws_type))
 
         if aws_type == 'SubscriptionConfirmation' or aws_type == 'Notification':
